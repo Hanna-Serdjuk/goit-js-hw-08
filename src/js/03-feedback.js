@@ -14,3 +14,22 @@
 // Для этого добавь в проект и используй библиотеку lodash.throttle.
 
 import throttle from "lodash.throttle";
+
+const refs = {
+    feedbackForm: document.querySelector(".feedback-form"),
+    email: document.querySelector(".feedback-form input"),
+    textArea: document.querySelector(".feedback-form textarea"),
+}
+
+const state = {};
+
+refs.feedbackForm.addEventListener('submit', (event) => {});
+
+refs.textArea.addEventListener('input', handleSetStorageState);
+
+refs.email.addEventListener('input', handleSetStorageState);
+
+function handleSetStorageState(event) {
+    state[event.target.name] = event.target.value;
+    localStorage.setItem("feedback-form-state", JSON.stringify(state));
+}
